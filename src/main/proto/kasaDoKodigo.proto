@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.zup.edu";
+option java_outer_classname = "KasaDoKodigo";
+option objc_class_prefix = "HLW";
+
+import "google/protobuf/timestamp.proto";
+
+package br.com.zup.edu;
+
+service KasaDoKodigoService {
+  rpc send (KasaDoKodigoRequest) returns (KasaDoKodigoReply) {}
+}
+
+service CadastroAutorService {
+  rpc cadastra (CadastraAutorRequest) returns (CadastraAutorResponse) {}
+}
+
+message CadastraAutorRequest {
+  string nome = 1;
+  string email = 2;
+  string descricao = 3;
+}
+
+message CadastraAutorResponse {
+  string id = 1;
+  string nome = 2;
+  string email = 3;
+  string descricao = 4;
+  google.protobuf.Timestamp cadastradoEm = 5;
+}
+
+message KasaDoKodigoRequest {
+  string name = 1;
+}
+
+message KasaDoKodigoReply {
+  string message = 1;
+}
