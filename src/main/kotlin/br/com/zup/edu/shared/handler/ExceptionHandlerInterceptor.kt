@@ -1,6 +1,7 @@
 package br.com.zup.edu.shared.handler
 
 import br.com.zup.edu.shared.handler.exceptions.AutorExistenteException
+import br.com.zup.edu.shared.handler.exceptions.CategoriaExistenteException
 import com.google.rpc.BadRequest
 import com.google.rpc.Code
 import io.grpc.Status
@@ -31,6 +32,7 @@ class ExceptionHandlerInterceptor: MethodInterceptor<Any, Any?> {
                 is IllegalStateException -> Status.FAILED_PRECONDITION.withDescription(e.message).asRuntimeException()
                 is ConstraintViolationException -> handleConstraintValidationException(e)
                 is AutorExistenteException -> Status.ALREADY_EXISTS.withDescription(e.message).asRuntimeException()
+                is CategoriaExistenteException -> Status.ALREADY_EXISTS.withDescription(e.message).asRuntimeException()
                 else -> Status.UNKNOWN.withDescription("Unexpected error happened").asRuntimeException()
             }
 

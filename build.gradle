@@ -42,7 +42,10 @@ dependencies {
 
     implementation("com.google.protobuf:protobuf-java-util:3.4.0")
     implementation("org.hibernate:hibernate-validator:6.1.6.Final")
-    implementation("io.micronaut.beanvalidation:micronaut-hibernate-validator")
+    /**
+     * TIP: causa problemas em validações customizadas quando usado junto com hibernate-validator:6.1.6.Final
+     * */
+    // implementation("io.micronaut.beanvalidation:micronaut-hibernate-validator")
 
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")

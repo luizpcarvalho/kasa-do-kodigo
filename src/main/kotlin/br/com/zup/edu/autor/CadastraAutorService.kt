@@ -16,7 +16,7 @@ class CadastraAutorService(@Inject private val repository: AutorRepository) {
 
     @Transactional
     fun cadastra(@Valid novoAutor: NovoAutor): Autor {
-        logger.info("Cadastrando autor $novoAutor")
+        logger.info("Cadastrando novo autor $novoAutor")
 
         if(repository.existsByEmail(novoAutor.email!!)){
             throw AutorExistenteException("Email existente")

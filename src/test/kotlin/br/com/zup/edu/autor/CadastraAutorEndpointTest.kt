@@ -20,8 +20,10 @@ import org.junit.jupiter.api.assertThrows
 import javax.inject.Singleton
 
 @MicronautTest(transactional = false) // recomendado para testes com grpc
-internal class CadastraAutorEndpointTest(val repository: AutorRepository,
-                                         val grpcClient: CadastroAutorServiceGrpc.CadastroAutorServiceBlockingStub) {
+internal class CadastraAutorEndpointTest(
+    val repository: AutorRepository,
+    val grpcClient: CadastroAutorServiceGrpc.CadastroAutorServiceBlockingStub
+) {
 
     @BeforeEach
     fun setup() {

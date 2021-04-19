@@ -17,6 +17,10 @@ service CadastroAutorService {
   rpc cadastra (CadastraAutorRequest) returns (CadastraAutorResponse) {}
 }
 
+service CadastraCategoriaService {
+  rpc cadastra (CadastraCategoriaRequest) returns (CadastraCategoriaResponse) {}
+}
+
 message CadastraAutorRequest {
   string nome = 1;
   string email = 2;
@@ -29,6 +33,15 @@ message CadastraAutorResponse {
   string email = 3;
   string descricao = 4;
   google.protobuf.Timestamp cadastradoEm = 5;
+}
+
+message CadastraCategoriaRequest {
+  string nome = 1;
+}
+
+message CadastraCategoriaResponse {
+  string id = 1;
+  string nome = 2;
 }
 
 message KasaDoKodigoRequest {
