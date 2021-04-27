@@ -21,6 +21,15 @@ service CadastraCategoriaService {
   rpc cadastra (CadastraCategoriaRequest) returns (CadastraCategoriaResponse) {}
 }
 
+service CadastraLivroService {
+  rpc cadastra (CadastraLivroRequest) returns (CadastraLivroResponse) {}
+}
+
+service ConsultaLivrosService {
+  rpc lista (ListaLivrosRequest) returns (ListaLivrosResponse) {}
+  rpc detalhe (DetalheLivroRequest) returns (DetalheLivroResponse) {}
+}
+
 message CadastraAutorRequest {
   string nome = 1;
   string email = 2;
@@ -42,6 +51,60 @@ message CadastraCategoriaRequest {
 message CadastraCategoriaResponse {
   string id = 1;
   string nome = 2;
+}
+
+message CadastraLivroRequest {
+  string titulo = 1;
+  string resumo = 2;
+  string sumario = 3;
+  string preco = 4;
+  int32 paginas = 5;
+  string isbn = 6;
+  string dataPublicacao = 7;
+  string categoriaId = 8;
+  string autorId = 9;
+}
+
+message CadastraLivroResponse {
+  string id = 1;
+  string titulo = 2;
+  string resumo = 3;
+  string sumario = 4;
+  string preco = 5;
+  int32 paginas = 6;
+  string isbn = 7;
+  string dataPublicacao = 8;
+  string categoriaId = 9;
+  string autorId = 10;
+}
+
+message ListaLivrosRequest {}
+
+message ListaLivrosResponse {
+  message Livro {
+    string id = 1;
+    string titulo = 2;
+  }
+  repeated Livro livros = 1;
+}
+
+message DetalheLivroRequest {
+  string id = 1;
+}
+
+message DetalheLivroResponse {
+  string id = 1;
+  string titulo = 2;
+  string resumo = 3;
+  string sumario = 4;
+  string preco = 5;
+  int32 paginas = 6;
+  string isbn = 7;
+  string dataPublicacao = 8;
+  string categoria = 9;
+  string autor = 10;
+  string descricaoAutor = 11;
+
 }
 
 message KasaDoKodigoRequest {

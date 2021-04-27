@@ -18,7 +18,7 @@ class CadastraCategoriaService(@Inject private val repository: CategoriaReposito
     fun cadastra(@Valid novaCategoria: NovaCategoria): Categoria {
         logger.info("Cadastrando nova categoria $novaCategoria")
 
-        if(repository.existsByNome(novaCategoria.nome)) {
+        if(repository.existsByNome(novaCategoria.nome!!)) {
             throw CategoriaExistenteException("Categoria existente!")
         }
 

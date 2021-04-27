@@ -1,5 +1,6 @@
 package br.com.zup.edu.autor
 
+import br.com.zup.edu.livro.Livro
 import java.time.LocalDateTime
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -24,4 +25,11 @@ class Autor(
 
     @Column(nullable = false)
     val cadastradoEm = LocalDateTime.now()
+
+    @OneToMany(mappedBy = "autor", cascade = [CascadeType.MERGE])
+    val livros: MutableList<Livro> = mutableListOf()
+
+    fun associaLivro(livro: Livro) {
+        livros.add(livro)
+    }
 }

@@ -2,6 +2,8 @@ package br.com.zup.edu.shared.handler
 
 import br.com.zup.edu.shared.handler.exceptions.AutorExistenteException
 import br.com.zup.edu.shared.handler.exceptions.CategoriaExistenteException
+import br.com.zup.edu.shared.handler.exceptions.LivroExistenteException
+import br.com.zup.edu.shared.handler.exceptions.LivroInexistenteException
 import com.google.rpc.BadRequest
 import com.google.rpc.Code
 import io.grpc.Status
@@ -33,6 +35,8 @@ class ExceptionHandlerInterceptor: MethodInterceptor<Any, Any?> {
                 is ConstraintViolationException -> handleConstraintValidationException(e)
                 is AutorExistenteException -> Status.ALREADY_EXISTS.withDescription(e.message).asRuntimeException()
                 is CategoriaExistenteException -> Status.ALREADY_EXISTS.withDescription(e.message).asRuntimeException()
+                is LivroExistenteException -> Status.ALREADY_EXISTS.withDescription(e.message).asRuntimeException()
+                is LivroInexistenteException -> Status.NOT_FOUND.withDescription(e.message).asRuntimeException()
                 else -> Status.UNKNOWN.withDescription("Unexpected error happened").asRuntimeException()
             }
 

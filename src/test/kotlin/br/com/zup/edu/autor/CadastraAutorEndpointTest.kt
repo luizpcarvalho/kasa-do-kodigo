@@ -92,9 +92,10 @@ internal class CadastraAutorEndpointTest(
             assertEquals("Request with invalid parameters", this.status.description)
             // verifica cada uma das validações
             assertThat(violations(this), containsInAnyOrder(
-                Pair("nome", "não deve estar em branco"),
-                Pair("email", "não deve estar em branco"),
-                Pair("descricao", "não deve estar em branco")
+                Pair("nome", "must not be blank"),
+                Pair("email", "must not be blank"),
+                Pair("descricao", "must not be blank"),
+                Pair("email", "must be a well-formed email address")
             ))
         }
     }
@@ -122,8 +123,8 @@ internal class CadastraAutorEndpointTest(
             assertEquals("Request with invalid parameters", this.status.description)
             // verifica cada uma das validações
             assertThat(violations(this), containsInAnyOrder(
-                Pair("email", "deve ser um endereço de e-mail bem formado"),
-                Pair("descricao", "tamanho deve ser entre 0 e 400")
+                Pair("email", "must be a well-formed email address"),
+                Pair("descricao", "size must be between 0 and 400")
             ))
         }
     }
